@@ -1,0 +1,22 @@
+<h1>student list view</h1>
+<section data-ng-controller="StudentsController" data-ng-init="find()">
+  <ul class="students unstyled">
+    <li data-ng-repeat="student in students">
+      <span>{{student.created | date:'medium'}}</span> /
+      <span>{{student.user.name}}</span>
+      <h2>
+        <a data-ng-href="#!/students/{{student._id}}">{{student.title}}</a>
+        <span data-ng-if="hasAuthorization(student)">
+          <a class="btn" href="/#!/students/{{student._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(student);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+      </h2>
+      <div>{{student.content}}</div>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!students || students.length">No students yet. <br> Why don't you <a href="/#!/students/create">Create One</a>?</h1>
+</section>

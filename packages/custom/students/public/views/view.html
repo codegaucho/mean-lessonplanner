@@ -1,0 +1,15 @@
+<h1>view of a student</h1>
+<section data-ng-controller="StudentsController" data-ng-init="findOne()">
+  <span>{{student.created | date:'medium'}}</span> /
+  <span>{{student.user.name}}</span>
+  <h2>{{student.title}}</h2>
+  <div data-ng-if="hasAuthorization(student)">
+    <a class="btn" href="/#!/students/{{student._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove(student);">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div>{{student.content}}</div>
+</section>
